@@ -1,0 +1,80 @@
+{% extends "mainapp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Striped Table</h4>
+        <a href="" class="btn btn-primary mr-2">noutbooks Create</a>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+               
+                <th>
+                  Title
+                </th>
+                <th>
+                 create date
+                </th>
+                <th>
+                  end date
+                </th>
+                <th>
+                  quantity
+                </th>
+                <th>
+                  price
+                </th>
+                <th>
+                    Total amounts
+                  </th>
+                <th>
+                  action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for noutbook in noutbooks %}
+              <tr>
+               
+                <td>
+                  {{ noutbook.title }}
+                </td>
+                <td>
+                  {{ noutbook.created_date }}
+                </td>
+                <td>
+                  {{ noutbook.end_date }}
+                </td>
+                <td>
+                  {{ noutbook.quantity }}
+                </td>
+                <td>
+                  {{ noutbook.price }}
+                </td>
+                <td>
+                    {{ noutbook.total_amounts }}
+                  </td>
+                
+                <td>
+                  {% comment %} {% if request.user.is_superuser or request.user.is_staff  %}
+                  <a href="{% url 'e_update' employe.id %}" class="btn btn-primary mr-2">Update</a>
+                  {% endif %} 
+                  {% if request.user.is_superuser  %}
+                  <a href="{% url 'e_delete' employe.id %}" class="btn btn-danger mr-2">Delete</a>
+                  {% endif %} {% endcomment %}
+                </td>
+                
+              </tr>
+              {% endfor %}
+            </tbody> 
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

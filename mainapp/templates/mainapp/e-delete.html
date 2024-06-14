@@ -1,0 +1,12 @@
+
+
+
+<form method="POST" action="{% url 'e_delete' employee.id %}">
+    {% csrf_token %}
+
+    <h3>Are you should to delete</h3>
+<button type="submit" class="btn btn-danger mr-2">YEs</button>
+<a href="{% url 'e_table' %}" type="submit" class="btn btn-primary btn-round">No</a>
+
+</form>
+

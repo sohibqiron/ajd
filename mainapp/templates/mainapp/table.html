@@ -1,0 +1,92 @@
+{% extends "mainapp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Striped Table</h4>
+        <a href="{% url 'e_create' %}" class="btn btn-primary mr-2">Employee Create</a>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+               
+                <th>
+                  Full name
+                </th>
+                <th>
+                  Birth date
+                </th>
+                <th>
+                  Cauntry
+                </th>
+                <th>
+                  City
+                </th>
+                <th>
+                  Address
+                </th>
+                <th>
+                  Specialty
+                </th>
+                <th>
+                  Salary
+                </th>
+                <th>
+                  Final Salary
+                </th>
+                <th>
+                  action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for employe in employees %}
+              <tr>
+               
+                <td>
+                  {{ employe.full_name }}
+                </td>
+                <td>
+                  {{ employe.birth_date }}
+                </td>
+                <td>
+                  {{ employe.country }}
+                </td>
+                <td>
+                  {{ employe.city }}
+                </td>
+                <td>
+                  {{ employe.address }}
+                </td>
+                <td>
+                  {{ employe.specialty }}
+                </td>
+                <td>
+                  $  {{ employe.salary }}
+                </td>
+                <td>
+                  $  {{ employe.final_salary }}
+                </td>
+                
+                <td>
+                  {% if request.user.is_superuser or request.user.is_staff  %}
+                  <a href="{% url 'e_update' employe.id %}" class="btn btn-primary mr-2">Update</a>
+                  {% endif %} 
+                  {% if request.user.is_superuser  %}
+                  <a href="{% url 'e_delete' employe.id %}" class="btn btn-danger mr-2">Delete</a>
+                  {% endif %}
+                </td>
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

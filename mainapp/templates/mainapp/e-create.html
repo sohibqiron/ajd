@@ -1,0 +1,64 @@
+{% extends "mainapp/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Employe Create</h4>
+        <p class="card-description">
+          Basic form elements
+        </p>
+        <form class="forms-sample" method = "POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">Full name</label>
+            
+            {% render_field form.full_name type="text" class="form-control" id="exampleInputName1" %}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail3">Birth date</label>
+            
+            {% render_field form.birth_date type="date" class="form-control" id="exampleInputdate" %}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Country</label>
+
+            {% render_field form.country type="text" class="form-control" %}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">City</label>
+            
+            {% render_field form.city  type="text" class="form-control" %}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Address</label>
+            
+            {% render_field form.address class="form-control" %}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Specialty</label>
+            
+            {% render_field form.specialty class="form-control" %}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">salary</label>
+            <!-- <input type="text" class="form-control" placeholder="</Coder>"> -->
+            {% render_field form.salary  type="number" class="form-control" %}
+          </div>
+          <!-- <div class="form-group">
+            <label for="exampleTextarea1">Description</label>
+            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+          </div> -->
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <button class="btn btn-light">Cancel</button>
+        </form>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
